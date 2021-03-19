@@ -8,7 +8,9 @@ server.use(express.json())
 
 server.get('/api/recipe/:id', async (req, res) => {
   const id = req.params.id
-  const recipe = await Recipes.getRecipeById(id)
+  let recipe = await Recipes.getRecipeById(id)
+  const steps = await Recipes.getStepsForRecipe(id)
+  recipe = {...recipe, "steps": steps}
   console.log(recipe)
   res.json(recipe)
 })
