@@ -1,9 +1,7 @@
-const express = require('express')
-const server = express()
+const server = require('./api/server')
 
-server.use(express.json())
+const port = process.env.PORT || 4000
 
-
-server.listen(4000, () => {
-  console.log('server listening on port 4000')
+server.listen(port, () => {
+  console.log(`listening on port ${port}`)
 })
